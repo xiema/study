@@ -1,0 +1,167 @@
+function SquareGame.new 0
+	push constant 2
+	call Memory.alloc 1
+	pop pointer 0
+	push constant 0
+	push constant 0
+	push constant 30
+	call Square.new 3
+	pop this 0
+	push constant 0
+	pop this 1
+	push pointer 0
+	return
+function SquareGame.dispose 0
+	push argument 0
+	pop pointer 0
+	push this 0
+	call Square.dispose 1
+	push pointer 0
+	call Memory.deAlloc 1
+	push constant 0
+	return
+function SquareGame.run 2
+	push argument 0
+	pop pointer 0
+	push constant 0
+	pop local 1
+	goto WHILE.6.COND
+label WHILE.6.BODY
+	goto WHILE.7.COND
+label WHILE.7.BODY
+	call Keyboard.keyPressed 0
+	pop local 0
+	push pointer 0
+	call SquareGame.moveSquare 1
+	pop temp 0
+label WHILE.7.COND
+	push local 0
+	push constant 0
+	eq
+	if-goto WHILE.7.BODY
+	push local 0
+	push constant 81
+	eq
+	if-goto IF.8.BODY
+	goto IF.8.END
+label IF.8.BODY
+	push constant 1
+	neg
+	pop local 1
+label IF.8.END
+	push local 0
+	push constant 90
+	eq
+	if-goto IF.9.BODY
+	goto IF.9.END
+label IF.9.BODY
+	push this 0
+	call Square.decSize 1
+label IF.9.END
+	push local 0
+	push constant 88
+	eq
+	if-goto IF.10.BODY
+	goto IF.10.END
+label IF.10.BODY
+	push this 0
+	call Square.incSize 1
+label IF.10.END
+	push local 0
+	push constant 131
+	eq
+	if-goto IF.11.BODY
+	goto IF.11.END
+label IF.11.BODY
+	push constant 1
+	pop this 1
+label IF.11.END
+	push local 0
+	push constant 133
+	eq
+	if-goto IF.12.BODY
+	goto IF.12.END
+label IF.12.BODY
+	push constant 2
+	pop this 1
+label IF.12.END
+	push local 0
+	push constant 130
+	eq
+	if-goto IF.13.BODY
+	goto IF.13.END
+label IF.13.BODY
+	push constant 3
+	pop this 1
+label IF.13.END
+	push local 0
+	push constant 132
+	eq
+	if-goto IF.14.BODY
+	goto IF.14.END
+label IF.14.BODY
+	push constant 4
+	pop this 1
+label IF.14.END
+	goto WHILE.15.COND
+label WHILE.15.BODY
+	call Keyboard.keyPressed 0
+	pop local 0
+	push pointer 0
+	call SquareGame.moveSquare 1
+	pop temp 0
+label WHILE.15.COND
+	push local 0
+	push constant 0
+	eq
+	not
+	if-goto WHILE.15.BODY
+label WHILE.6.COND
+	push local 1
+	not
+	if-goto WHILE.6.BODY
+	push constant 0
+	return
+function SquareGame.moveSquare 0
+	push argument 0
+	pop pointer 0
+	push this 1
+	push constant 1
+	eq
+	if-goto IF.16.BODY
+	goto IF.16.END
+label IF.16.BODY
+	push this 0
+	call Square.moveUp 1
+label IF.16.END
+	push this 1
+	push constant 2
+	eq
+	if-goto IF.17.BODY
+	goto IF.17.END
+label IF.17.BODY
+	push this 0
+	call Square.moveDown 1
+label IF.17.END
+	push this 1
+	push constant 3
+	eq
+	if-goto IF.18.BODY
+	goto IF.18.END
+label IF.18.BODY
+	push this 0
+	call Square.moveLeft 1
+label IF.18.END
+	push this 1
+	push constant 4
+	eq
+	if-goto IF.19.BODY
+	goto IF.19.END
+label IF.19.BODY
+	push this 0
+	call Square.moveRight 1
+label IF.19.END
+	push constant 5
+	call Sys.wait 1
+	push constant 0
+	return

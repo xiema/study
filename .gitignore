@@ -1,0 +1,5 @@
+#Ignored file types
+*.dll
+
+#Ignored folders
+/nand2tetris/tools

@@ -1,0 +1,10 @@
+Bill
+	Add person
+		Add expense (power consumption of gadget, daily use)
+
+	End of month
+		Add Real power consumption
+		Edit predicted power consumption items (if needed, for this month only)
+		get shared power consumption, divide
+			can edit predicted power in needed
+			if predicted > real, scale down predicted, can specify fixed shared consumption

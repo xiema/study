@@ -1,0 +1,86 @@
+add
+	@SP
+	AM=M-1
+	D=M
+	@SP
+	A=M-1
+	M=D+M
+	
+sub
+	@SP
+	AM=M-1
+	D=M
+	@SP
+	A=M-1
+	M=M-D
+
+neg
+	@SP
+	A=M-1
+	M=-M
+	
+eq
+	@SP
+	AM=M-1
+	D=M
+	@SP
+	A=M-1
+	D=M-D
+	@NEXT+2
+	D;JEQ
+	D=-1
+	@SP
+	A=M-1
+	M=!D
+	
+gt
+	@SP
+	AM=M-1
+	D=M
+	@SP
+	A=M-1
+	D=M-D
+	@-32768
+	D=D&A
+	@NEXT+2
+	D;JEQ
+	D=-1
+	@SP
+	M=!D
+	
+lt
+	@SP
+	AM=M-1
+	D=M
+	@SP
+	A=M-1
+	D=D-M
+	@-32768
+	D=D&A
+	@NEXT+2
+	D;JEQ
+	D=-1
+	@SP
+	M=!D
+
+
+and
+	@SP
+	AM=M-1
+	D=M
+	@SP
+	A=M-1
+	M=D&M
+	
+or
+	@SP
+	AM=M-1
+	D=M
+	@SP
+	A=M-1
+	M=D|M
+	
+not
+	@SP
+	A=M-1
+	M=!M

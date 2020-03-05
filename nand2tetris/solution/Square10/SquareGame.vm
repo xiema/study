@@ -1,0 +1,156 @@
+function SquareGame.new 0
+	push 2
+	call Memory.alloc 1
+	pop pointer 0
+	push 0
+	push 0
+	push 30
+	call Square.new 3
+	pop field 0
+	push 0
+	pop field 1
+	push pointer 0
+	return
+function SquareGame.dispose 0
+	push field 0
+	call Square.dispose 1
+	push pointer 0
+	call Memory.deAlloc 1
+	return
+function SquareGame.run 2
+	push 0
+	pop local 1
+	goto 6.WHILE.COND
+  label 6.WHILE.BODY
+	goto 7.WHILE.COND
+  label 7.WHILE.BODY
+	call Keyboard.keyPressed 0
+	pop local 0
+	push pointer 0
+	call SquareGame.moveSquare 1
+  label 7.WHILE.COND
+	push local 0
+	push 0
+	eq
+	if-goto 7.WHILE.BODY
+	push local 0
+	push 81
+	eq
+	if-goto 8.IF.BODY
+	goto 8.IF.END
+  label 8.IF.BODY
+	push 1
+	neg
+	pop local 1
+  label 8.IF.END
+	push local 0
+	push 90
+	eq
+	if-goto 9.IF.BODY
+	goto 9.IF.END
+  label 9.IF.BODY
+	push field 0
+	call Square.decSize 1
+  label 9.IF.END
+	push local 0
+	push 88
+	eq
+	if-goto 10.IF.BODY
+	goto 10.IF.END
+  label 10.IF.BODY
+	push field 0
+	call Square.incSize 1
+  label 10.IF.END
+	push local 0
+	push 131
+	eq
+	if-goto 11.IF.BODY
+	goto 11.IF.END
+  label 11.IF.BODY
+	push 1
+	pop field 1
+  label 11.IF.END
+	push local 0
+	push 133
+	eq
+	if-goto 12.IF.BODY
+	goto 12.IF.END
+  label 12.IF.BODY
+	push 2
+	pop field 1
+  label 12.IF.END
+	push local 0
+	push 130
+	eq
+	if-goto 13.IF.BODY
+	goto 13.IF.END
+  label 13.IF.BODY
+	push 3
+	pop field 1
+  label 13.IF.END
+	push local 0
+	push 132
+	eq
+	if-goto 14.IF.BODY
+	goto 14.IF.END
+  label 14.IF.BODY
+	push 4
+	pop field 1
+  label 14.IF.END
+	goto 15.WHILE.COND
+  label 15.WHILE.BODY
+	call Keyboard.keyPressed 0
+	pop local 0
+	push pointer 0
+	call SquareGame.moveSquare 1
+  label 15.WHILE.COND
+	push local 0
+	push 0
+	eq
+	not
+	if-goto 15.WHILE.BODY
+  label 6.WHILE.COND
+	push local 1
+	not
+	if-goto 6.WHILE.BODY
+	return
+function SquareGame.moveSquare 0
+	push field 1
+	push 1
+	eq
+	if-goto 16.IF.BODY
+	goto 16.IF.END
+  label 16.IF.BODY
+	push field 0
+	call Square.moveUp 1
+  label 16.IF.END
+	push field 1
+	push 2
+	eq
+	if-goto 17.IF.BODY
+	goto 17.IF.END
+  label 17.IF.BODY
+	push field 0
+	call Square.moveDown 1
+  label 17.IF.END
+	push field 1
+	push 3
+	eq
+	if-goto 18.IF.BODY
+	goto 18.IF.END
+  label 18.IF.BODY
+	push field 0
+	call Square.moveLeft 1
+  label 18.IF.END
+	push field 1
+	push 4
+	eq
+	if-goto 19.IF.BODY
+	goto 19.IF.END
+  label 19.IF.BODY
+	push field 0
+	call Square.moveRight 1
+  label 19.IF.END
+	push 5
+	call Sys.wait 1
+	return
